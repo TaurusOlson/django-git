@@ -1,4 +1,3 @@
-==========
 django-git
 ==========
 
@@ -12,15 +11,14 @@ django-git
   * when the commits were made 
 
 
----------------
+Table of contents
+-----------------
 
 * `Installation`_
 * `Quick start`_
 * `Contribute`_
 * `Tests`_
 * `License`_
-
----------------
 
 
 Installation
@@ -36,7 +34,7 @@ Requirements:
 
 Install with pip::
 
-    pip install django-git
+    pip install dj-git
 
 
 Quick start
