@@ -17,6 +17,8 @@ setup(
     long_description=README,
     author='Taurus Olson',
     author_email='taurusolson@gmail.com',
+    url = 'https://github.com/TaurusOlson/django-git',
+    keywords = ['django', 'application', 'git', 'projects'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
