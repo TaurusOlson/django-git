@@ -1,0 +1,46 @@
+{% extends "git/base.html" %}
+
+{% block body %}
+
+<div style="text-align:center">
+<h1>Git projects</h1>
+</div>
+
+{# Filters #}
+<form action="" method="GET">
+    <input type="text" name="name" placeholder="Search project" value="{{ request.GET.name }}"/>
+    <input type="submit" value="Submit" style="display: none;" />
+
+    <input type="text" name="author" placeholder="Search author" value="{{ request.GET.author }}"/>
+    <input type="submit" value="Submit" style="display: none;" />
+</form>
+
+
+{% if project_list %}
+<table width="100%" class="table table-hover">
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Author</th>
+    <th>Start date</th>
+    <th>Latest update</th>
+    <th>Number of commits</th>
+</tr>
+</thead>
+<tbody>
+    {% for project in project_list %}
+    <tr>
+        <td><a href="{% url 'git:detail' project.name %}">{{ project.name }}</a></td>
+        <td>{{ project.author }}</td>
+        <td>{{ project.first_time | date }}</td>
+        <td>{{ project.last_time | timesince }}</td>
+        <td>{{ project.commits_count }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+{% else %}
+<p>No projects found.</p>
+{% endif %}
+
+{% endblock %}

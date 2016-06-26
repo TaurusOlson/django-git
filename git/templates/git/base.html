@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'git/css/normalize.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'git/css/skeleton.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'git/css/style.css' %}" />
+<script type="text/javascript" src="{% static 'git/js/jquery.js' %}"></script>
+
+
+<title>django-git</title>
+</head>
+
+<div class="container">
+{% block body %}
+{% endblock %}
+</div>

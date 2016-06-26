@@ -1,0 +1,19 @@
+{% extends "git/base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<script src="{% static 'git/js/fancify.js' %}"></script>
+
+{% regroup project.commit_set.all by commit_time|date as commit_list %}
+<ul>
+    {% for commit in commit_list %}
+        <li id="{{ commit.grouper|slugify }}-group"><b>{{ commit.grouper }}</b> ({{ commit.list|length }} commits)</li>
+        <ul>
+            {% for item in commit.list %}
+                <li class="{{ commit.grouper|slugify }}-group" style="display: none;">{{ item.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
+{% endblock %}

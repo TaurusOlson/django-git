@@ -1,0 +1,101 @@
+{% extends "git/base.html" %}
+{% load staticfiles %}
+
+{% block body %}
+
+<script src="{% static 'git/js/fancify.js' %}"></script>
+
+<div class="project-name">
+    <h3><a href="{% url 'git:index' %}">index</a> > {{ project.name }}</h3>
+</div>
+
+<h4 id="description">Description</h4>
+<pre class="file" id="readme" style="display: none">
+{{ readme }}
+</pre>
+</p>
+
+<p>
+<h4>Statistics</h4>
+<ul>
+    <li>Nb of commits: {{ project.commits_count }}</li>
+    <li>Nb of commits per day: </li>
+    <li>Nb of committers: </li>
+</ul>
+</p>
+
+<p>
+<embed type="image/svg+xml" src="{% static 'git/charts/commits_count_by_committer.svg' %}"/>
+</p>
+
+
+<p>
+<h4 id="commits">Commits</h4>
+
+{# Pagination before the table #}
+<div class="pagination">
+    <span class="step-links">
+        {% if commits.has_previous %}
+        <span class="button">
+            <a href="?page={{ commits.previous_page_number }}#commits">Prev</a> 
+        </span>
+        {% endif %}
+
+        <span class="current">
+            {{ commits.number }}/{{ commits.paginator.num_pages }}
+        </span>
+
+        {% if commits.has_next %}
+        <span class="button">
+            <a href="?page={{ commits.next_page_number }}#commits">Next</a>
+        </span>
+        {% endif %}
+    </span>
+</div>
+
+{# Commits table #}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>SHA</th>
+            <th>Date</th>
+            <th>Committer</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for commit in commits|dictsortreversed:"commit_time" %}
+<tr>
+    <td class="commit-sha">{{ commit.sha | truncatechars:10 }}</td>
+    <td class="commit-time">{{ commit.commit_time | date }}</td>
+    <td class="committer">{{ commit.committer }}</td>
+    <td>{{ commit.message | truncatechars:50 }}</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+</p>
+
+{# Pagination after the table #}
+<div class="pagination">
+    <span class="step-links">
+        {% if commits.has_previous %}
+        <span class="button">
+            <a href="?page={{ commits.previous_page_number }}#commits">Prev</a> 
+        </span>
+        {% endif %}
+
+        <span class="current">
+            {{ commits.number }}/{{ commits.paginator.num_pages }}
+        </span>
+
+        {% if commits.has_next %}
+        <span class="button">
+            <a href="?page={{ commits.next_page_number }}#commits">Next</a>
+        </span>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
