@@ -26,25 +26,30 @@ django-git
 Installation
 ------------
 
-::
+Requirements:
+
+* Python 3
+* Django 1.9
+* pygit2 
+* pygal
+* pytz
+
+Install with pip::
+
     pip install django-git
 
 
 Quick start
 -----------
 
-1. Add 'git' to your INSTALLED_APPS setting like this::
+1. In settings.py, add 'git' to your INSTALLED_APPS like this::
 
     INSTALLED_APPS = [
         ...
         'git',
     ]
 
-2. Include the git URLconf in your project urls.py like this::
-
-    url(r'^git/', include('git.urls')),
-
-3. Specify the path to your Git repositories::
+2. and specify the path to your Git repositories::
 
     PROJECTS_DIR = "path/to/git_repositories"
 
@@ -59,8 +64,19 @@ If necessary, set your database configuration. For example, for PostgreSQL::
         }
     }
 
-3. Run `python manage.py migrate` to create the git models.
+3. In urls.py, include the git URLconf in your project this::
 
+    from django.conf.urls import url, include
+
+    urlpatterns = [
+        ...
+        url(r'^git/', include('git.urls')),
+    ]
+
+3. Run the following command to create the git models::
+   
+   python manage.py migrate 
+   
 4. Update the Git projects::
 
    python manage.py updategitprojects
