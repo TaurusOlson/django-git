@@ -24,6 +24,11 @@ Table of contents
 Installation
 ------------
 
+Install with pip::
+
+    pip install dj-git
+
+
 Requirements:
 
 * Python 3
@@ -31,10 +36,6 @@ Requirements:
 * pygit2 
 * pygal
 * pytz
-
-Install with pip::
-
-    pip install dj-git
 
 
 Quick start
@@ -47,7 +48,7 @@ Quick start
         'git',
     ]
 
-2. and specify the path to your Git repositories::
+and specify the path to your Git repositories::
 
     PROJECTS_DIR = "path/to/git_repositories"
 
@@ -62,7 +63,7 @@ If necessary, set your database configuration. For example, for PostgreSQL::
         }
     }
 
-3. In urls.py, include the git URLconf in your project this::
+2. In urls.py, include the git URLconf in your project this::
 
     from django.conf.urls import url, include
 
@@ -73,19 +74,19 @@ If necessary, set your database configuration. For example, for PostgreSQL::
 
 3. Run the following command to create the git models::
    
-   python manage.py migrate 
+    python manage.py migrate 
    
 4. Update the Git projects::
 
-   python manage.py updategitprojects
+    python manage.py updategitprojects
 
-4. Start the development server::
+5. Start the development server::
 
-   python manage.py runservser
+    python manage.py runservser
    
 and visit http://127.0.0.1:8000/admin/
 
-5. Visit http://127.0.0.1:8000/git to see your Git projects
+6. Visit http://127.0.0.1:8000/git to see your Git projects
 
 
 Tests
