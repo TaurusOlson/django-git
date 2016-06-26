@@ -13,4 +13,4 @@ tags:
 	ctags -R **/*.py
 
 clean:
-	rm -rf build dist 
+	rm -rf build dist *.egg-info
