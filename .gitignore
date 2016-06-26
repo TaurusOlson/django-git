@@ -3,6 +3,6 @@ __pycache__
 experimental.py
 notes.org
 dist
-django_git.egg-info
+*.egg-info
 build
 git/static/git/charts/**
