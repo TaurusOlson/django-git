@@ -11,7 +11,6 @@ from pathlib import Path, PosixPath
 from hashlib import sha1
 from random import randint, sample
 
-
 # Third-party
 import pygal 
 from pygal.style import BlueStyle
@@ -247,6 +246,7 @@ def make_bar_chart(title, label, data, width=960, height=400):
     chart.width = 960
     chart.height = 400
     chart.style = custom_style
+    chart.x_label_rotation = 45
     chart.show_y_guides=True
     chart.show_x_guides=False
     chart.explicit_size=True 

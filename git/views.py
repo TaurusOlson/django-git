@@ -59,6 +59,7 @@ def detail(request, name):
     # Chart
     chart_title = 'Number of commits of the top 20 committers'
     chart = make_bar_chart(chart_title, 'Count', counts)
+    chart.x_labels = [x['committer'] for x in commits_count_by_committer]
 
     svg_file = Path(PACKAGE_DIR).joinpath('static/git/charts/commits_count_by_committer.svg')
     chart.render_to_file(svg_file.as_posix())
