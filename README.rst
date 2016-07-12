@@ -5,10 +5,10 @@ django-git
 
 - show all the Git projects stored in a local directory
 - give a detail view of each project (dashboard)
-  * number of commits 
-  * number of days since the last commit 
-  * number of hours spent on the project 
-  * when the commits were made 
+- number of commits 
+- number of days since the last commit 
+- number of hours spent on the project 
+- when the commits were made 
 
 
 Table of contents
