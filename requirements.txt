@@ -1,5 +1,5 @@
 cffi==1.7.0
-Django==1.9.7
+Django==1.11.28
 django-git==0.1
 pycparser==2.14
 pygal==2.2.3
